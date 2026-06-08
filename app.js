@@ -96,6 +96,5 @@ function updateCountdown() {
   document.getElementById("countdown").textContent =
     `${days} დღე ${hours} საათი ${minutes} წუთი`;
 }
-ჯს
 updateCountdown();
 setInterval(updateCountdown, 1000);
