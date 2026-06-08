@@ -73,3 +73,30 @@ slides.forEach((slide, index) => {
 
   buttonsContainer.appendChild(button);
 });
+
+const lectureDate = new Date("May 22, 2027 20:00:00");
+
+function updateCountdown() {
+  const now = new Date();
+
+  const difference = lectureDate - now;
+
+  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+
+  const hours = Math.floor(
+    (difference % (1000 * 60 * 60 * 24)) /
+    (1000 * 60 * 60)
+  );
+
+  const minutes = Math.floor(
+    (difference % (1000 * 60 * 60)) /
+    (1000 * 60)
+  );
+
+  document.getElementById("countdown").textContent =
+    `${days} დღე ${hours} საათი ${minutes} წუთი`;
+}
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
