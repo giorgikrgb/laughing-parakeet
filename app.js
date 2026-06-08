@@ -51,18 +51,17 @@ slider.addEventListener("mouseleave", () => {
 });
 
 
-
 slides.forEach((slide, index) => {
-  const button = document.createElement("button");
+  const dot = document.createElement("span");
 
-  button.textContent = index + 1;
+  dot.classList.add("dot");
 
-  button.addEventListener("click", () => {
+  dot.addEventListener("click", () => {
     currentSlide = index;
     showSlide(currentSlide);
   });
 
-  buttonsContainer.appendChild(button);
+  buttonsContainer.appendChild(dot);
 });
 
 

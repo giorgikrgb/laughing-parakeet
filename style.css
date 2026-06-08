@@ -17,3 +17,22 @@
   height: 40px;
   cursor: pointer;
 }
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: gray;
+  cursor: pointer;
+}
+
+.dot:hover {
+  transform: scale(1.2);
+}
