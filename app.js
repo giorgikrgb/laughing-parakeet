@@ -11,15 +11,21 @@ function updateClock() {
 }
 
 updateClock();
-
 setInterval(updateClock, 1000);
+
+
 
 let currentSlide = 0;
 
 const slides = document.querySelectorAll(".slide");
+const slider = document.querySelector(".slider");
+const buttonsContainer = document.getElementById("buttons");
 
 function showSlide(index) {
-  slides.forEach(slide => slide.classList.remove("active"));
+  slides.forEach((slide) => {
+    slide.classList.remove("active");
+  });
+
   slides[index].classList.add("active");
 }
 
@@ -33,10 +39,9 @@ function nextSlide() {
   showSlide(currentSlide);
 }
 
+showSlide(currentSlide);
 let interval = setInterval(nextSlide, 3000);
 
-const slider = document.querySelector(".slider");
-
 slider.addEventListener("mouseenter", () => {
   clearInterval(interval);
 });
@@ -45,17 +50,7 @@ slider.addEventListener("mouseleave", () => {
   interval = setInterval(nextSlide, 3000);
 });
 
-const slider = document.querySelector(".slider");
 
-slider.addEventListener("mouseenter", () => {
-  clearInterval(interval);
-});
-
-slider.addEventListener("mouseleave", () => {
-  interval = setInterval(nextSlide, 3000);
-});
-
-const buttonsContainer = document.getElementById("buttons");
 
 slides.forEach((slide, index) => {
   const button = document.createElement("button");
@@ -70,6 +65,7 @@ slides.forEach((slide, index) => {
   buttonsContainer.appendChild(button);
 });
 
+
 const lectureDate = new Date("May 22, 2027 20:00:00");
 
 function updateCountdown() {
@@ -77,7 +73,15 @@ function updateCountdown() {
 
   const difference = lectureDate - now;
 
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  if (difference <= 0) {
+    document.getElementById("countdown").textContent =
+      "ლექცია დაწყებულია";
+    return;
+  }
+
+  const days = Math.floor(
+    difference / (1000 * 60 * 60 * 24)
+  );
 
   const hours = Math.floor(
     (difference % (1000 * 60 * 60 * 24)) /
@@ -92,7 +96,6 @@ function updateCountdown() {
   document.getElementById("countdown").textContent =
     `${days} დღე ${hours} საათი ${minutes} წუთი`;
 }
-
+ჯს
 updateCountdown();
-
 setInterval(updateCountdown, 1000);
